@@ -8,6 +8,7 @@ const App = () => {
     <div className="App">
       <GlobalStyles />
       <Header />
+      <main className="container"></main>
     </div>
   );
 };

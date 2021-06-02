@@ -10,4 +10,15 @@ export default createGlobalStyle`
   body {
     font-family: 'Nunito', sans-serif;
   }
+
+  ul {
+    list-style: none;
+  }
+
+  .container {
+    padding: 2rem 1.5rem;
+    flex: 1 1;
+    max-width: 75rem;
+    margin: 0 auto;
+  }
 `;
