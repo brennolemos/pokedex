@@ -1,13 +1,15 @@
 import React from 'react';
-import GlobalStyles from './styles/global';
 
-function App() {
+import GlobalStyles from './styles/global';
+import Header from './components/Header';
+
+const App = () => {
   return (
     <div className="App">
       <GlobalStyles />
-      <h1>Pokedex</h1>
+      <Header />
     </div>
   );
-}
+};
 
 export default App;
