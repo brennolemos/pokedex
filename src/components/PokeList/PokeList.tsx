@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+
 import PokeCard, { PokeCardProps } from '../PokeCard';
+import * as S from './PokeList-styles';
 
 const PokeList = () => {
   const [data, setData] = useState<PokeCardProps[]>([]);
@@ -16,11 +18,11 @@ const PokeList = () => {
   }, []);
 
   return (
-    <section>
+    <S.List>
       {data?.map((pokemon) => (
-        <PokeCard name={pokemon.name} />
+        <PokeCard key={pokemon.name} name={pokemon.name} url={pokemon.url} />
       ))}
-    </section>
+    </S.List>
   );
 };
 

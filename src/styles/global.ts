@@ -15,6 +15,11 @@ export default createGlobalStyle`
     list-style: none;
   }
 
+  img {
+display: block;
+max-width: 100%;
+  }
+
   .container {
     padding: 2rem 1.5rem;
     flex: 1 1;
