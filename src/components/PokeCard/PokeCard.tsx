@@ -1,7 +1,11 @@
 import React from 'react';
 
-const PokeCard = () => {
-  return <div>PokeCard</div>;
+export type PokeCardProps = {
+  name: string;
+};
+
+const PokeCard = ({ name }: PokeCardProps) => {
+  return <div>{name}</div>;
 };
 
 export default PokeCard;
