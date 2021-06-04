@@ -11,13 +11,17 @@ export default createGlobalStyle`
     font-family: 'Nunito', sans-serif;
   }
 
+  :root {
+    --white: #fff;
+  }
+
   ul {
     list-style: none;
   }
 
   img {
-display: block;
-max-width: 100%;
+    display: block;
+    max-width: 100%;
   }
 
   .container {

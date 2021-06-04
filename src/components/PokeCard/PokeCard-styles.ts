@@ -16,7 +16,7 @@ export const Card = styled.div`
 `;
 
 export const Title = styled.h2`
-  color: #fff;
+  color: var(--white);
   text-transform: capitalize;
   font-size: 1.5rem;
   margin-bottom: 0.5rem;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Badge = styled.span`
-  color: #fff;
+  color: var(--white);
   padding: 0.25rem 0.5rem;
   border-radius: 0.25rem;
   display: inline-block;
