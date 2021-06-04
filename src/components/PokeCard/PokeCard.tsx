@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import * as S from './PokeCard-styles';
 import typeColors from '../../helpers/typeColors';
+import Badge from '../Badge';
 
 export type PokeCardProps = {
   name: string;
@@ -40,7 +41,7 @@ const PokeCard = ({ name, url }: PokeCardProps) => {
         <S.Id>#{pokemonIndex.padStart(3, '0')}</S.Id>
         <S.Title>{name}</S.Title>
         {poketypes.map((slot) => (
-          <span>{slot.type.name}</span>
+          <Badge type={slot.type.name} />
         ))}
       </div>
       <S.Image src={urlImage} alt="" />
