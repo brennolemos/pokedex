@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import * as S from './PokeCard-styles';
 import typeColors from '../../helpers/typeColors';
 
 export type PokeCardProps = {
@@ -7,11 +8,17 @@ export type PokeCardProps = {
   url: string;
 };
 
+type TypesProps = {
+  type: {
+    name: string;
+  };
+};
+
 const PokeCard = ({ name, url }: PokeCardProps) => {
   const pokemonIndex = url.split('/')[url.split('/').length - 2];
   const urlImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonIndex}.png`;
 
-  const [poketype, setPokeType] = useState('');
+  const [poketypes, setPokeTypes] = useState<TypesProps[] | null>(null);
 
   useEffect(() => {
     const loadData = async () => {
@@ -19,17 +26,27 @@ const PokeCard = ({ name, url }: PokeCardProps) => {
         `https://pokeapi.co/api/v2/pokemon/${pokemonIndex}`,
       );
       const data = await response.json();
-      setPokeType(data.types[0].type.name);
+      setPokeTypes(data.types);
     };
 
     loadData();
   }, []);
 
-  return (
-    <div style={{ backgroundColor: `${typeColors[poketype]}AA` }}>
-      {name}
-      <img src={urlImage} alt="" />
-    </div>
+  return poketypes ? (
+    <S.Card
+      style={{ backgroundColor: `${typeColors[poketypes[0].type.name]}AA` }}
+    >
+      <div>
+        <S.Id>#{pokemonIndex.padStart(3, '0')}</S.Id>
+        <S.Title>{name}</S.Title>
+        {poketypes.map((slot) => (
+          <span>{slot.type.name}</span>
+        ))}
+      </div>
+      <S.Image src={urlImage} alt="" />
+    </S.Card>
+  ) : (
+    <p>Loading...</p>
   );
 };
 
