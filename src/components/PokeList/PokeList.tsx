@@ -5,6 +5,7 @@ import * as S from './PokeList-styles';
 
 const PokeList = () => {
   const [data, setData] = useState<PokeCardProps[]>([]);
+
   useEffect(() => {
     const loadData = async () => {
       const response = await fetch(

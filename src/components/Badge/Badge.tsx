@@ -2,6 +2,7 @@ import React from 'react';
 
 import * as S from './Badge-styles';
 import typeColors from '../../helpers/typeColors';
+import { capitalize } from '../../helpers/utils';
 
 type BadgeProps = {
   type: string;
@@ -10,7 +11,7 @@ type BadgeProps = {
 const Badge = ({ type }: BadgeProps) => {
   return (
     <S.Badge style={{ backgroundColor: typeColors[type] }}>
-      {type.charAt(0).toUpperCase() + type.slice(1)}
+      {capitalize(type)}
     </S.Badge>
   );
 };
