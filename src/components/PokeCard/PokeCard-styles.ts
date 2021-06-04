@@ -6,6 +6,13 @@ export const Card = styled.div`
   grid-template-columns: 1fr auto;
   padding: 1rem;
   align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    img {
+      top: -30%;
+    }
+  }
 `;
 
 export const Title = styled.h2`
@@ -26,4 +33,5 @@ export const Image = styled.img`
   top: -25%;
   margin-bottom: -25%;
   max-width: 12.5rem;
+  transition: all 0.3s ease;
 `;
