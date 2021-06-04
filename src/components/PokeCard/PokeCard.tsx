@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import * as S from './PokeCard-styles';
 import typeColors from '../../helpers/typeColors';
@@ -34,18 +35,20 @@ const PokeCard = ({ name, url }: PokeCardProps) => {
   }, []);
 
   return poketypes ? (
-    <S.Card
-      style={{ backgroundColor: `${typeColors[poketypes[0].type.name]}AA` }}
-    >
-      <div>
-        <S.Id>#{pokemonIndex.padStart(3, '0')}</S.Id>
-        <S.Title>{name}</S.Title>
-        {poketypes.map((slot) => (
-          <Badge type={slot.type.name} />
-        ))}
-      </div>
-      <S.Image src={urlImage} alt="" />
-    </S.Card>
+    <NavLink to={`/${pokemonIndex}`}>
+      <S.Card
+        style={{ backgroundColor: `${typeColors[poketypes[0].type.name]}AA` }}
+      >
+        <div>
+          <S.Id>#{pokemonIndex.padStart(3, '0')}</S.Id>
+          <S.Title>{name}</S.Title>
+          {poketypes.map((slot) => (
+            <Badge type={slot.type.name} />
+          ))}
+        </div>
+        <S.Image src={urlImage} alt="" />
+      </S.Card>
+    </NavLink>
   ) : (
     <p>Loading...</p>
   );

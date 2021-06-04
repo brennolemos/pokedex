@@ -24,6 +24,10 @@ export default createGlobalStyle`
     max-width: 100%;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   .container {
     padding: 2rem 1.5rem;
     flex: 1 1;
