@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <S.Header>
       <NavLink to="/">
-        <h1>Pokedex</h1>
+        <S.Logo>Pokedex</S.Logo>
       </NavLink>
     </S.Header>
   );

@@ -9,3 +9,12 @@ export const Header = styled.header`
   box-shadow: 0 2px 4px rgba(30, 60, 90, 0.1);
   position: relative;
 `;
+
+export const Logo = styled.h1`
+  color: var(--gray-2);
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: var(--gray-3);
+  }
+`;

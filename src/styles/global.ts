@@ -13,6 +13,9 @@ export default createGlobalStyle`
 
   :root {
     --white: #fff;
+    --gray-1: #14141c;
+    --gray-2: #1e1e26;
+    --gray-3: #282830;
   }
 
   ul {
@@ -33,5 +36,17 @@ export default createGlobalStyle`
     flex: 1 1;
     max-width: 75rem;
     margin: 0 auto;
+  }
+
+  @media (max-width: 75rem) {
+    html {
+      font-size: 93.75%;
+    }
+  }
+
+  @media (max-width: 576px) {
+    html {
+      font-size: 87.5%;
+    }
   }
 `;

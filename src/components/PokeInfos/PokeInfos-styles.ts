@@ -6,6 +6,10 @@ export const Infos = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   box-shadow: 0 2px 4px rgba(30, 60, 90, 0.1);
+
+  @media (max-width: 768px) {
+    grid-template-columns: auto;
+  }
 `;
 
 export const Column = styled.div`
