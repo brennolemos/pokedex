@@ -14,10 +14,17 @@ type PokeInfosProps = {
   height: number;
   weight: number;
   types: TypesProps[];
+  abilities: Abilities[];
 };
 
 type TypesProps = {
   type: {
+    name: string;
+  };
+};
+
+type Abilities = {
+  ability: {
     name: string;
   };
 };
@@ -32,12 +39,11 @@ const PokeInfos = () => {
     const loadData = async () => {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
       const data = await response.json();
-      console.log({ data });
       setPokeInfos(data);
     };
 
     loadData();
-  }, []);
+  }, [id]);
 
   if (pokeInfos)
     return (
@@ -57,6 +63,12 @@ const PokeInfos = () => {
         <S.Column>
           <p> Height: {pokeInfos.height}</p>
           <p> Weight: {pokeInfos.weight}</p>
+          <p>
+            Abilities:{' '}
+            {pokeInfos.abilities.map((slot) => (
+              <span key={slot.ability.name}>{slot.ability.name},</span>
+            ))}
+          </p>
         </S.Column>
       </S.Infos>
     );

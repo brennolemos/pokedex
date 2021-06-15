@@ -32,7 +32,7 @@ const PokeCard = ({ name, url }: PokeCardProps) => {
     };
 
     loadData();
-  }, []);
+  }, [pokemonIndex]);
 
   return poketypes ? (
     <NavLink to={`/${pokemonIndex}`}>
@@ -43,7 +43,7 @@ const PokeCard = ({ name, url }: PokeCardProps) => {
           <S.Id>#{pokemonIndex.padStart(3, '0')}</S.Id>
           <S.Title>{name}</S.Title>
           {poketypes.map((slot) => (
-            <Badge type={slot.type.name} />
+            <Badge key={slot.type.name} type={slot.type.name} />
           ))}
         </div>
         <S.Image src={urlImage} alt="" />
