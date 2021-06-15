@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import * as S from './PokeCard-styles';
 import typeColors from '../../helpers/typeColors';
+
 import Badge from '../Badge';
 
 export type PokeCardProps = {

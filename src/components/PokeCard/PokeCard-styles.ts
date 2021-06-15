@@ -7,6 +7,7 @@ export const Card = styled.div`
   padding: 1rem;
   align-items: center;
   cursor: pointer;
+  position: relative;
 
   &:hover {
     img {

@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import * as S from './PokeInfos-styles';
 import Badge from '../Badge';
 import typeColors from '../../helpers/typeColors';
+import Loading from '../Loading';
 
 type ParamsProps = {
   id: string;
@@ -73,7 +74,7 @@ const PokeInfos = () => {
       </S.Infos>
     );
 
-  return null;
+  return <Loading />;
 };
 
 export default PokeInfos;
