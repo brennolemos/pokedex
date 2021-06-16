@@ -19,7 +19,7 @@ const App = () => {
         <main className="container">
           <Route path={'/'} exact>
             <Search search={search} setSearch={setSearch} />
-            <PokeList />
+            <PokeList search={search} />
           </Route>
           <Route path={'/:id'} component={PokeInfos} />
         </main>
