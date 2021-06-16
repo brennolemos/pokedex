@@ -19,6 +19,6 @@ export const ProgressBar = styled.div`
   color: #fff;
   text-align: center;
   white-space: nowrap;
-  background-color: var(--gray-3);
+  background-color: rgba(0, 0, 0, 0.6);
   transition: width 0.6s ease;
 `;

@@ -51,7 +51,6 @@ const PokeInfos = () => {
     const loadData = async () => {
       const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
       const data = await response.json();
-      console.log({ data });
       setPokeInfos(data);
     };
 
@@ -74,17 +73,17 @@ const PokeInfos = () => {
           <S.Image src={urlImage} alt="" />
         </S.Column>
         <S.Column>
+          <h3>Infos:</h3>
+
           <p> Height: {pokeInfos.height / 10} m</p>
           <p> Weight: {pokeInfos.weight / 10} kg</p>
           <p>
-            Abilities:
+            Abilities:{' '}
             {pokeInfos.abilities.map((slot) => (
-              <span key={slot.ability.name}>
-                {capitalize(slot.ability.name)},
-              </span>
+              <Badge key={slot.ability.name} type={slot.ability.name} />
             ))}
           </p>
-          <h2>Stats:</h2>
+          <h3 style={{ marginTop: '1rem' }}>Stats:</h3>
           {pokeInfos.stats.map((slot) => (
             <div
               style={{

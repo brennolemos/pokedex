@@ -10,7 +10,11 @@ type BadgeProps = {
 
 const Badge = ({ type }: BadgeProps) => {
   return (
-    <S.Badge style={{ backgroundColor: typeColors[type] }}>
+    <S.Badge
+      style={{
+        backgroundColor: typeColors[type] ? typeColors[type] : '#5d5e60',
+      }}
+    >
       {capitalize(type)}
     </S.Badge>
   );
