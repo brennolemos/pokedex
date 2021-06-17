@@ -18,12 +18,12 @@ const Search = ({ search, setSearch }: SearchProps) => {
         name="search"
         id="search"
         type="text"
-        placeholder="Input search text..."
+        placeholder="Input the pokemon name..."
         required
         value={search}
         onChange={({ target }) => setSearch(target.value)}
       />
-      <S.Button type="submit"></S.Button>
+      {/* <S.Button type="submit"></S.Button> */}
     </S.Form>
   );
 };

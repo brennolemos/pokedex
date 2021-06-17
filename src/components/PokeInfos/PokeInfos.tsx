@@ -8,6 +8,7 @@ import { capitalize } from '../../helpers/utils';
 import Badge from '../Badge';
 import Loading from '../Loading';
 import ProgressBar from '../ProgressBar';
+import useFetchApi from '../../helpers/useFetch';
 
 type ParamsProps = {
   id: string;
@@ -45,18 +46,16 @@ const PokeInfos = () => {
   const { id } = useParams<ParamsProps>();
   const urlImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
 
-  const [pokeInfos, setPokeInfos] = useState<PokeInfosProps | null>(null);
+  const {
+    data: pokeInfos,
+    loading,
+    error,
+  } = useFetchApi<PokeInfosProps | null>(
+    `https://pokeapi.co/api/v2/pokemon/${id}`,
+  );
 
-  useEffect(() => {
-    const loadData = async () => {
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-      const data = await response.json();
-      setPokeInfos(data);
-    };
-
-    loadData();
-  }, [id]);
-
+  if (loading) return <Loading />;
+  if (error) return <div>{error}</div>;
   if (pokeInfos)
     return (
       <S.Infos>
@@ -99,7 +98,7 @@ const PokeInfos = () => {
       </S.Infos>
     );
 
-  return <Loading />;
+  return null;
 };
 
 export default PokeInfos;

@@ -1,8 +1,8 @@
 import { useEffect, useState, useCallback } from 'react';
 
-const useFetchApi = (url: string) => {
-  const [loading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
+const useFetchApi = <T>(url: string) => {
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState<T>();
   const [error, setError] = useState(null);
 
   const fetchData = useCallback(async () => {
@@ -10,9 +10,7 @@ const useFetchApi = (url: string) => {
       setLoading(true);
       const response = await fetch(url);
       const data = await response.json();
-      if (data.results) {
-        setData(data.results);
-      } else {
+      if (data) {
         setData(data);
       }
     } catch (err) {
