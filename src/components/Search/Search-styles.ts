@@ -13,6 +13,7 @@ export const Search = styled.input`
   border-radius: 0.25rem;
   border: 1px solid var(--white);
   padding: 1rem;
+  padding-left: 4rem;
   box-shadow: 0 4px 8px rgba(30, 60, 90, 0.1);
   transition: all 0.3s ease;
   font-size: 1rem;
@@ -29,13 +30,13 @@ export const Search = styled.input`
 
 export const Button = styled.button`
   width: 4rem;
-  height: 4rem;
+  height: 3.125rem;
   background: url(${icon}) no-repeat center center;
   text-indent: -150px;
   border: none;
   cursor: pointer;
   position: absolute;
-  top: 0;
+  left: 0;
   right: 0;
   outline: none;
   box-shadow: none;
