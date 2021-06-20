@@ -18,7 +18,7 @@ const PokeList = ({ search }: PokeListProps) => {
   const [filteredData, setFilteredData] =
     useState<PokeCardProps[] | undefined>(undefined);
   const { data, loading, error } = useFetch<PokemonProps | null>(
-    'https://pokeapi.co/api/v2/pokemon?limit=25',
+    'https://pokeapi.co/api/v2/pokemon?limit=100',
   );
 
   useEffect(() => {

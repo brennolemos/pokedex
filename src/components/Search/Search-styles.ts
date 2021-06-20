@@ -10,6 +10,7 @@ export const Form = styled.form`
 `;
 
 export const Search = styled.input`
+  font-family: 'Nunito', sans-serif;
   border-radius: 0.25rem;
   border: 1px solid var(--white);
   padding: 1rem;
