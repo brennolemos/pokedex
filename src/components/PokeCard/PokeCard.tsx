@@ -47,7 +47,7 @@ const PokeCard = ({ name, url }: PokeCardProps) => {
             <Badge key={slot.type.name} type={slot.type.name} />
           ))}
         </div>
-        <S.Image src={urlImage} alt="" />
+        <S.Image src={urlImage} alt={name} />
       </S.Card>
     </NavLink>
   ) : (
