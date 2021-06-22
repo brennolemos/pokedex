@@ -68,7 +68,7 @@ const PokeInfos = () => {
           {pokeInfos.types.map((slot) => (
             <Badge key={slot.type.name} type={slot.type.name} />
           ))}
-          <S.Image src={urlImage} alt="" />
+          <S.Image src={urlImage} alt={pokeInfos?.name} />
         </S.Column>
         <S.Column>
           <h3>Infos:</h3>
