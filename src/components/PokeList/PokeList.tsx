@@ -12,28 +12,25 @@ type PokemonProps = {
 
 type PokeListProps = {
   search: string;
+  pokemons: PokeCardProps[];
 };
 
-const PokeList = ({ search }: PokeListProps) => {
+const PokeList = ({ search, pokemons }: PokeListProps) => {
   const [filteredData, setFilteredData] =
     useState<PokeCardProps[] | undefined>(undefined);
-  const { data, loading, error } = useFetch<PokemonProps | null>(
-    'https://pokeapi.co/api/v2/pokemon?limit=100',
-  );
 
   useEffect(() => {
     const filteredResults =
-      search && data
-        ? data.results.filter((pokemon: PokeCardProps) =>
+      search && pokemons
+        ? pokemons.filter((pokemon: PokeCardProps) =>
             pokemon.name.includes(search),
           )
-        : data?.results;
-
+        : pokemons;
     setFilteredData(filteredResults);
-  }, [search, data]);
+  }, [search, pokemons]);
 
-  if (loading) return <Loading />;
-  if (error) return <div>{error}</div>;
+  // if (loading) return <Loading />;
+  // if (error) return <div>{error}</div>;
   if (!filteredData) return <div>Não há pokemon para essa pesquisa.</div>;
 
   return (
