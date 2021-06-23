@@ -1,2 +1,2 @@
 export { default } from './PokeCard';
-export type { PokeCardProps } from './PokeCard';
+export type { Pokemon, PokeCardProps } from './PokeCard';

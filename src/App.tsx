@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { HashRouter, Route } from 'react-router-dom';
 
 import GlobalStyles from './styles/global';
-import { getAllPokemon } from './helpers/utils';
+import { getAllPokemon, getPokemon } from './helpers/utils';
 
 import Header from './components/Header';
 import PokeList from './components/PokeList';
@@ -10,14 +10,14 @@ import PokeInfos from './components/PokeInfos';
 import Search from './components/Search';
 import Loading from './components/Loading';
 
-import { PokeCardProps } from './components/PokeCard';
+import { Pokemon } from './components/PokeCard';
 
 type PokemonProps = {
-  results: PokeCardProps[];
+  results: Pokemon[];
 };
 
 const App = () => {
-  const [pokemons, setPokemons] = React.useState<PokeCardProps[]>([]);
+  const [pokemons, setPokemons] = React.useState<Pokemon[]>([]);
   const [search, setSearch] = React.useState('');
   const [loading, setLoading] = React.useState(true);
 
@@ -25,8 +25,21 @@ const App = () => {
     let response = await getAllPokemon<PokemonProps>(
       'https://pokeapi.co/api/v2/pokemon?limit=100',
     );
-    setPokemons(response.results);
+    await loadingPokemon(response.results);
+    // setPokemons(response.results);
     setLoading(false);
+  };
+
+  const loadingPokemon = async (data: Pokemon[]) => {
+    let _pokemon = await Promise.all(
+      data.map(async (pokemon) => {
+        let pokemonRecord = await getPokemon<Pokemon>(pokemon.url);
+        console.log(pokemonRecord);
+        return pokemonRecord;
+      }),
+    );
+
+    setPokemons(_pokemon);
   };
 
   useEffect(() => {

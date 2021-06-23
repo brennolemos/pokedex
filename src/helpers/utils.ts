@@ -9,3 +9,11 @@ export const getAllPokemon = <T>(url: string) => {
     resolve(data);
   });
 };
+
+export const getPokemon = <T>(url: string) => {
+  return new Promise<T>(async (resolve) => {
+    const response = await fetch(url);
+    const data = await response.json();
+    resolve(data);
+  });
+};

@@ -1,30 +1,28 @@
 import React, { useState, useEffect } from 'react';
 
-import PokeCard, { PokeCardProps } from '../PokeCard';
+import PokeCard, { Pokemon } from '../PokeCard';
 import useFetch from '../../helpers/useFetch';
 import * as S from './PokeList-styles';
 
 import Loading from '../Loading';
 
 type PokemonProps = {
-  results: PokeCardProps[];
+  results: Pokemon[];
 };
 
 type PokeListProps = {
   search: string;
-  pokemons: PokeCardProps[];
+  pokemons: Pokemon[];
 };
 
 const PokeList = ({ search, pokemons }: PokeListProps) => {
   const [filteredData, setFilteredData] =
-    useState<PokeCardProps[] | undefined>(undefined);
+    useState<Pokemon[] | undefined>(undefined);
 
   useEffect(() => {
     const filteredResults =
       search && pokemons
-        ? pokemons.filter((pokemon: PokeCardProps) =>
-            pokemon.name.includes(search),
-          )
+        ? pokemons.filter((pokemon: Pokemon) => pokemon.name.includes(search))
         : pokemons;
     setFilteredData(filteredResults);
   }, [search, pokemons]);
@@ -36,7 +34,7 @@ const PokeList = ({ search, pokemons }: PokeListProps) => {
   return (
     <S.List>
       {filteredData.map((pokemon) => (
-        <PokeCard key={pokemon.name} name={pokemon.name} url={pokemon.url} />
+        <PokeCard key={pokemon.name} pokemon={pokemon} />
       ))}
     </S.List>
   );

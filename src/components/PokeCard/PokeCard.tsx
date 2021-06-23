@@ -7,8 +7,14 @@ import typeColors from '../../helpers/typeColors';
 import Badge from '../Badge';
 
 export type PokeCardProps = {
+  pokemon: Pokemon;
+};
+
+export type Pokemon = {
+  id: string;
   name: string;
   url: string;
+  types: TypesProps[];
 };
 
 type TypesProps = {
@@ -17,41 +23,26 @@ type TypesProps = {
   };
 };
 
-const PokeCard = ({ name, url }: PokeCardProps) => {
-  const pokemonIndex = url.split('/')[url.split('/').length - 2];
-  const urlImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemonIndex}.png`;
+const PokeCard = ({ pokemon }: PokeCardProps) => {
+  const urlImage = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
 
-  const [poketypes, setPokeTypes] = useState<TypesProps[] | null>(null);
-
-  useEffect(() => {
-    const loadData = async () => {
-      const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${pokemonIndex}`,
-      );
-      const data = await response.json();
-      setPokeTypes(data.types);
-    };
-
-    loadData();
-  }, [pokemonIndex]);
-
-  return poketypes ? (
-    <NavLink to={`/${pokemonIndex}`}>
+  return (
+    <NavLink to={`/${pokemon.id}`}>
       <S.Card
-        style={{ backgroundColor: `${typeColors[poketypes[0].type.name]}AA` }}
+        style={{
+          backgroundColor: `${typeColors[pokemon.types[0].type.name]}AA`,
+        }}
       >
         <div>
-          <S.Id>#{pokemonIndex.padStart(3, '0')}</S.Id>
-          <S.Title>{name}</S.Title>
-          {poketypes.map((slot) => (
+          <S.Id>#{pokemon.id.toString().padStart(3, '0')}</S.Id>
+          <S.Title>{pokemon.name}</S.Title>
+          {pokemon.types.map((slot) => (
             <Badge key={slot.type.name} type={slot.type.name} />
           ))}
         </div>
-        <S.Image src={urlImage} alt={name} />
+        <S.Image src={urlImage} alt={pokemon.name} />
       </S.Card>
     </NavLink>
-  ) : (
-    <p>Loading...</p>
   );
 };
 
