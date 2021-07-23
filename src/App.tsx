@@ -28,8 +28,8 @@ const App = () => {
     let response = await getAllPokemon<PokemonProps>(
       `https://pokeapi.co/api/v2/pokemon?limit=27&offset=${currentPage}`
     );
-    await loadingPokemon([...response.results, ...pokemonsAux]);
-    setPokemonsAux(response.results);
+    await loadingPokemon(response.results);
+    // setPokemonsAux(response.results);
     setLoading(false);
   }, [currentPage]);
 
@@ -41,11 +41,10 @@ const App = () => {
       })
     );
 
-    setPokemons(_pokemon);
+    setPokemons([...pokemons, ..._pokemon]);
   };
 
   const fetchMore = () => {
-    // setLoading(true);
     setCurrentPage((currentPageInsideState) => currentPageInsideState + 27);
   };
 
@@ -61,10 +60,14 @@ const App = () => {
         <main className="container">
           <Route path={"/"} exact>
             <Search search={search} setSearch={setSearch} />
-            {loading && <Loading />}
-
-            <PokeList pokemons={pokemons} search={search} />
-            <InfiniteScroll fetchMore={fetchMore} />
+            {loading ? (
+              <Loading />
+            ) : (
+              <>
+                <PokeList pokemons={pokemons} search={search} />
+                <InfiniteScroll fetchMore={fetchMore} />
+              </>
+            )}
           </Route>
           <Route path={"/:id"} component={PokeInfos} />
         </main>
