@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
 import PokeCard, { Pokemon } from '../PokeCard';
-import useFetch from '../../helpers/useFetch';
+// import useFetch from '../../helpers/useFetch';
 import * as S from './PokeList-styles';
 
-import Loading from '../Loading';
+// import Loading from '../Loading';
 
-type PokemonProps = {
-  results: Pokemon[];
-};
+// type PokemonProps = {
+//   results: Pokemon[];
+// };
 
 type PokeListProps = {
   search: string;
