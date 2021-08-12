@@ -1,4 +1,4 @@
-import * as S from './Loading-styles';
+import * as S from "./Loading-styles";
 
 const Loading = () => {
   return (

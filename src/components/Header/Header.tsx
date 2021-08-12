@@ -1,8 +1,8 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Github } from '@styled-icons/fa-brands';
+import React, { memo } from "react";
+import { NavLink } from "react-router-dom";
+import { Github } from "@styled-icons/fa-brands";
 
-import * as S from './Header-styles';
+import * as S from "./Header-styles";
 
 const Header = () => {
   return (
@@ -22,4 +22,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);

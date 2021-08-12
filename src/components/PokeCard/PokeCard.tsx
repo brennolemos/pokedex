@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { memo } from "react";
+import { NavLink } from "react-router-dom";
 
-import * as S from './PokeCard-styles';
-import typeColors from '../../helpers/typeColors';
+import * as S from "./PokeCard-styles";
+import typeColors from "../../helpers/typeColors";
 
-import Badge from '../Badge';
+import Badge from "../Badge";
 
 export type PokeCardProps = {
   pokemon: Pokemon;
@@ -34,7 +34,7 @@ const PokeCard = ({ pokemon }: PokeCardProps) => {
         }}
       >
         <div>
-          <S.Id>#{pokemon.id.toString().padStart(3, '0')}</S.Id>
+          <S.Id>#{pokemon.id.toString().padStart(3, "0")}</S.Id>
           <S.Title>{pokemon.name}</S.Title>
           {pokemon.types.map((slot) => (
             <Badge key={slot.type.name} type={slot.type.name} />
@@ -46,4 +46,4 @@ const PokeCard = ({ pokemon }: PokeCardProps) => {
   );
 };
 
-export default PokeCard;
+export default memo(PokeCard);

@@ -1,13 +1,13 @@
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
-import * as S from './PokeInfos-styles';
-import typeColors from '../../helpers/typeColors';
-import { capitalize } from '../../helpers/utils';
+import * as S from "./PokeInfos-styles";
+import typeColors from "../../helpers/typeColors";
+import { capitalize } from "../../helpers/utils";
 
-import Badge from '../Badge';
-import Loading from '../Loading';
-import ProgressBar from '../ProgressBar';
-import useFetchApi from '../../helpers/useFetch';
+import Badge from "../Badge";
+import Loading from "../Loading";
+import ProgressBar from "../ProgressBar";
+import useFetchApi from "../../helpers/useFetch";
 
 type ParamsProps = {
   id: string;
@@ -50,7 +50,7 @@ const PokeInfos = () => {
     loading,
     error,
   } = useFetchApi<PokeInfosProps | null>(
-    `https://pokeapi.co/api/v2/pokemon/${id}`,
+    `https://pokeapi.co/api/v2/pokemon/${id}`
   );
 
   if (loading) return <Loading />;
@@ -63,7 +63,7 @@ const PokeInfos = () => {
             backgroundColor: `${typeColors[pokeInfos.types[0].type.name]}BB`,
           }}
         >
-          <S.Id>#{id.padStart(3, '0')}</S.Id>
+          <S.Id>#{id.padStart(3, "0")}</S.Id>
           <S.Title>{pokeInfos?.name}</S.Title>
           {pokeInfos.types.map((slot) => (
             <Badge key={slot.type.name} type={slot.type.name} />
@@ -76,16 +76,16 @@ const PokeInfos = () => {
           <p> Height: {pokeInfos.height / 10} m</p>
           <p> Weight: {pokeInfos.weight / 10} kg</p>
           <p>
-            Abilities:{' '}
+            Abilities:{" "}
             {pokeInfos.abilities.map((slot) => (
               <Badge key={slot.ability.name} type={slot.ability.name} />
             ))}
           </p>
-          <h3 style={{ marginTop: '1rem' }}>Stats:</h3>
+          <h3 style={{ marginTop: "1rem" }}>Stats:</h3>
           {pokeInfos.stats.map((slot) => (
             <div
               style={{
-                marginBottom: '.5rem',
+                marginBottom: ".5rem",
               }}
               key={slot.stat.name}
             >

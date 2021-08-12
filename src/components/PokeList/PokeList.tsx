@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
-import PokeCard, { Pokemon } from '../PokeCard';
+import PokeCard, { Pokemon } from "../PokeCard";
 // import useFetch from '../../helpers/useFetch';
-import * as S from './PokeList-styles';
+import * as S from "./PokeList-styles";
 
 // import Loading from '../Loading';
 
@@ -16,8 +16,9 @@ type PokeListProps = {
 };
 
 const PokeList = ({ search, pokemons }: PokeListProps) => {
-  const [filteredData, setFilteredData] =
-    useState<Pokemon[] | undefined>(undefined);
+  const [filteredData, setFilteredData] = useState<Pokemon[] | undefined>(
+    undefined
+  );
 
   useEffect(() => {
     const filteredResults =

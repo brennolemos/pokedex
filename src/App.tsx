@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect } from "react";
 import { HashRouter, Route } from "react-router-dom";
 
 import GlobalStyles from "./styles/global";
@@ -19,7 +19,6 @@ type PokemonProps = {
 
 const App = () => {
   const [pokemons, setPokemons] = React.useState<Pokemon[]>([]);
-  const [pokemonsAux, setPokemonsAux] = React.useState<Pokemon[]>([]);
   const [search, setSearch] = React.useState("");
   const [loading, setLoading] = React.useState(true);
   const [currentPage, setCurrentPage] = React.useState(0);

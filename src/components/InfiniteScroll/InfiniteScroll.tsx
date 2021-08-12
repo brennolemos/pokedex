@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { memo, useEffect, useRef } from "react";
 
 type InfiniteScrollProps = {
   fetchMore: () => void;
@@ -29,4 +29,4 @@ const InfiniteScroll = ({ fetchMore }: InfiniteScrollProps) => {
   return <div ref={containerRef} />;
 };
 
-export default InfiniteScroll;
+export default memo(InfiniteScroll);
