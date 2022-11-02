@@ -1,6 +1,8 @@
 import React, { useCallback, useEffect } from "react";
 import { HashRouter, Route } from "react-router-dom";
 
+import { Pokemon } from "./model/Pokemon";
+
 import GlobalStyles from "./styles/global";
 import { getAllPokemon, getPokemon } from "./helpers/utils";
 
@@ -10,8 +12,6 @@ import PokeInfos from "./components/PokeInfos";
 import Search from "./components/Search";
 import Loading from "./components/Loading";
 import InfiniteScroll from "./components/InfiniteScroll";
-
-import { Pokemon } from "./components/PokeCard";
 
 type PokemonProps = {
   results: Pokemon[];
@@ -25,7 +25,7 @@ const App = () => {
 
   const fetchData = useCallback(async () => {
     let response = await getAllPokemon<PokemonProps>(
-      `https://pokeapi.co/api/v2/pokemon?limit=27&offset=${currentPage}`
+      `https://pokeapi.co/api/v2/pokemon?limit=27&offset=${currentPage}`,
     );
     await loadingPokemon(response.results);
     // setPokemonsAux(response.results);
@@ -36,8 +36,13 @@ const App = () => {
     let _pokemon = await Promise.all(
       data.map(async (pokemon) => {
         let pokemonRecord = await getPokemon<Pokemon>(pokemon.url);
-        return pokemonRecord;
-      })
+        return new Pokemon({
+          id: pokemonRecord.id,
+          name: pokemonRecord.name,
+          url: pokemonRecord.url,
+          types: pokemonRecord.types,
+        });
+      }),
     );
 
     setPokemons([...pokemons, ..._pokemon]);
