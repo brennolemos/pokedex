@@ -4,7 +4,6 @@ import { HashRouter, Route } from "react-router-dom";
 import { Pokemon } from "./model/Pokemon";
 
 import GlobalStyles from "./styles/global";
-import { getAllPokemon, getPokemon } from "./helpers/utils";
 
 import Header from "./components/Header";
 import PokeList from "./components/PokeList";
@@ -24,7 +23,7 @@ const App = () => {
   const [currentPage, setCurrentPage] = React.useState(0);
 
   const fetchData = useCallback(async () => {
-    let response = await getAllPokemon<PokemonProps>(
+    let response = await Pokemon.fetchAll<PokemonProps>(
       `https://pokeapi.co/api/v2/pokemon?limit=27&offset=${currentPage}`,
     );
     await loadingPokemon(response.results);
@@ -35,7 +34,7 @@ const App = () => {
   const loadingPokemon = async (data: Pokemon[]) => {
     let _pokemon = await Promise.all(
       data.map(async (pokemon) => {
-        let pokemonRecord = await getPokemon<Pokemon>(pokemon.url);
+        let pokemonRecord = await Pokemon.fetchByUrl<Pokemon>(pokemon.url);
         return new Pokemon({
           id: pokemonRecord.id,
           name: pokemonRecord.name,
