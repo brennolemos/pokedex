@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Pokemon } from "../../model/Pokemon";
 
-import PokeCard, { Pokemon } from "../PokeCard";
+import PokeCard from "../PokeCard";
 // import useFetch from '../../helpers/useFetch';
 import * as S from "./PokeList-styles";
 

@@ -5,22 +5,10 @@ import * as S from "./PokeCard-styles";
 import typeColors from "../../helpers/typeColors";
 
 import Badge from "../Badge";
+import { Pokemon } from "../../model/Pokemon";
 
 export type PokeCardProps = {
   pokemon: Pokemon;
-};
-
-export type Pokemon = {
-  id: string;
-  name: string;
-  url: string;
-  types: TypesProps[];
-};
-
-type TypesProps = {
-  type: {
-    name: string;
-  };
 };
 
 const PokeCard = ({ pokemon }: PokeCardProps) => {
